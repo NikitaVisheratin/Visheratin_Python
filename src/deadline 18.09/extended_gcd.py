@@ -1,19 +1,19 @@
-def extended_gcd(first, second):
+def extended_gcd(first, second): #функция нахождения gcd и разложения по Безу
     if first == 0 and second == 0:
         return 0, 0, 0
     
     A = abs(first)
     B = abs(second)
-    x0, y0 = 1, 0
+    x0, y0 = 1, 0 #задаем наши будущие коэффициенты
     x1, y1 = 0, 1
 
     while B != 0:
         q = A // B
         A, B = B, A - q * B
-        x0, x1 = x1, x0 - q * x1
+        x0, x1 = x1, x0 - q * x1 #подсчитываем коэффициенты
         y0, y1 = y1, y0 - q * y1
 
-    if first < 0: x0 = -x0
+    if first < 0: x0 = -x0 #работаем с отрицательными
     if second < 0: y0 = -y0
     return A, x0, y0
 
